@@ -67,7 +67,7 @@ html {
 	color: black;
 }
 
-/* Medium Screens - >= 768px */
+/* screens tablet and larger */
 @media (min-width: 768px) {
 	.firstThumbnailRow {
 		display: flex;
@@ -82,10 +82,4 @@ html {
 		width: 32%;
 		margin-bottom: 0%;
 	}
-}
-/* Large Screens - >=992px */
-@media (min-width: 992px) {
-}
-/* XL Screens - >= 1200px */
-@media (min-width: 1200px) {
 }

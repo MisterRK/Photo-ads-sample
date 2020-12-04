@@ -1,7 +1,4 @@
-console.log(Navigator.geolocation)
 fetch("https://api.taboola.com/2.0/json/apitestaccount/recommendations.get", {
-	// ? Remove method and headers when performing a GET request
-	// ? POST,PATCH must be uppercase
 	method: "POST",
 	body: JSON.stringify({
 		placements: [
@@ -36,33 +33,32 @@ fetch("https://api.taboola.com/2.0/json/apitestaccount/recommendations.get", {
 	.then((response) => response.json())
 	.then((json) => {
 		json.placements.map((placement) => {
-         console.log(placement);
 
-            let firstRow = document.querySelector(".firstThumbnailRow");
-            let secondRow = document.querySelector(".secondThumbnailRow");
+			let firstRow = document.querySelector(".firstThumbnailRow");
+			let secondRow = document.querySelector(".secondThumbnailRow");
 
-            let thumbnailDiv = document.createElement("div");
-            let header = document.createElement("h4");
-            let thumbnailImg = document.createElement("a");
-            let branding = document.createElement('p')
+			let thumbnailDiv = document.createElement("div");
+			let header = document.createElement("h4");
+			let thumbnailImg = document.createElement("a");
+			let branding = document.createElement("p");
 
-            thumbnailDiv.className = 'thumbnailDiv'
-            thumbnailImg.className = 'thumbnailLink'
-            header.className = 'thumbnailTitle'
-            branding.className = 'thumbnailBranding'
+			thumbnailDiv.className = "thumbnailDiv";
+			thumbnailImg.className = "thumbnailLink";
+			header.className = "thumbnailTitle";
+			branding.className = "thumbnailBranding";
 
-            header.innerHTML = `<a class="thumbnailLink" href="${placement.list[0].url}">${placement.list[0].name}</a>`
-            thumbnailImg.innerHTML = `<img class="thumbnailImg" src="${placement.list[0].thumbnail[0].url}" ></img>`
-            thumbnailImg.href = placement.list[0].url
-            branding.innerHTML = `<a class="thumbnailLink" href="${placement.list[0].url}">${placement.list[0].branding} | ${placement.list[0].categories[0]}</a>`
+			header.innerHTML = `<a class="thumbnailLink" href="${placement.list[0].url}">${placement.list[0].name}</a>`;
+			thumbnailImg.innerHTML = `<img class="thumbnailImg" src="${placement.list[0].thumbnail[0].url}" ></img>`;
+			thumbnailImg.href = placement.list[0].url;
+			branding.innerHTML = `<a class="thumbnailLink" href="${placement.list[0].url}">${placement.list[0].branding} | ${placement.list[0].categories[0]}</a>`;
 
-            thumbnailDiv.append(thumbnailImg, header, branding)
+			thumbnailDiv.append(thumbnailImg, header, branding);
 
-            // determine which row the thumbnail should be in
-            if(json.placements.indexOf(placement) <= 2){
-               firstRow.append(thumbnailDiv)
-            } else {
-               secondRow.append(thumbnailDiv)
-            }
+			// determine which row the thumbnail should be in
+			if (json.placements.indexOf(placement) <= 2) {
+				firstRow.append(thumbnailDiv);
+			} else {
+				secondRow.append(thumbnailDiv);
+			}
 		});
 	});
