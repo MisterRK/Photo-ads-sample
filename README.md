@@ -1,2 +1,2 @@
-# taboola-takehome-113020
-taboola take home for solutions engineer position
+# Photo-ads-sample  
+An example of dynamic ads with images for the bottom of a webpage
